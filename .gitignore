@@ -27,3 +27,6 @@ hs_err_pid*
 
 # Production folder
 out
+
+# Project generated files
+*.dat
