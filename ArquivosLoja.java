@@ -35,7 +35,8 @@ public class ArquivosLoja {
         System.out.println("Produtos excluidos com sucesso!\n");
     }
 
-    public void gravarProdutos() {
+    public void gravarProdutos() { // TODO passar as funções de gravar e recuperar para uma interface
+                                   // 'Serializable'
         ObjectOutputStream outputStream = null;
         try {
             outputStream = new ObjectOutputStream(new FileOutputStream("produtos.dat"));
