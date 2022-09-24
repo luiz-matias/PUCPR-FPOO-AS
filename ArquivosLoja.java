@@ -30,7 +30,7 @@ public class ArquivosLoja {
             System.out.println("Produto inexistente!\n");
     }
 
-    public void excluirProdutos() {
+    public void excluirTodosProdutos() { // alterei o nome para ficar mais claro a funcionalidade
         produtos.clear();
         System.out.println("Produtos excluidos com sucesso!\n");
     }
@@ -69,7 +69,7 @@ public class ArquivosLoja {
                 else if (obj instanceof Assinatura)
                     this.produtos.add((Assinatura) obj);
             }
-        } catch (EOFException ex) {     // when EOF is reached
+        } catch (EOFException ex) { // when EOF is reached
             System.out.println("Fim do arquivo");
         } catch (ClassNotFoundException | IOException ex) {
             ex.printStackTrace();
@@ -85,24 +85,30 @@ public class ArquivosLoja {
         }
     }
 
-
     public static void main(String[] args) {
         ArquivosLoja loja = new ArquivosLoja();
 
-        Jogo counterStrike = new Jogo("Counter-Strike", "Jogo desenvolvido em 1999", 19.90, "Valve", "Tiro", 18);
-        Jogo godOfWar = new Jogo("God Of War", "Jogo desenvolvido em 2018", 199.90, "Santa Monica Studios", "Aventura", 16);
-        Eletronico playstation5 = new Eletronico("Playstation 5", "Console desenvolvido em 2020", 4599.90, "Sony", "B0B3Z4WB52", CondicaoEletronico.NOVO);
-        Assinatura playstationPlus = new Assinatura("Playstation+", "Serviço de assinatura da Sony/Playstation", 139.90, "Playstation Plus", 90, "ABCDE-12345-54321-EDCBA");
+        Jogo counterStrike = new Jogo(1, "Counter-Strike", "Jogo desenvolvido em 1999", 19.90, "Valve", "Tiro", 18);
+        Jogo godOfWar = new Jogo(2, "God Of War", "Jogo desenvolvido em 2018", 199.90, "Santa Monica Studios",
+                "Aventura",
+                16);
+        Jogo eldenRing = new Jogo(3, "Elden Ring", "Jogo desenvolvido em 2022", 179.90, "FromSoftware", "RPG", 14);
+        Eletronico playstation5 = new Eletronico(4, "Playstation 5", "Console desenvolvido em 2020", 4599.90, "Sony",
+                "B0B3Z4WB52", CondicaoEletronico.NOVO);
+        Assinatura playstationPlus = new Assinatura(5, "Playstation+", "Serviço de assinatura da Sony/Playstation",
+                139.90,
+                "Playstation Plus", 90, "ABCDE-12345-54321-EDCBA");
 
         loja.adicionaProduto(counterStrike);
         loja.adicionaProduto(godOfWar);
+        loja.adicionaProduto(eldenRing);
         loja.adicionaProduto(playstation5);
         loja.adicionaProduto(playstationPlus);
         loja.listarProdutos();
         loja.gravarProdutos();
         loja.excluirProduto(godOfWar);
         loja.listarProdutos();
-        loja.excluirProdutos();
+        loja.excluirTodosProdutos();
         loja.listarProdutos();
         loja.recuperarProdutos();
         loja.listarProdutos();
