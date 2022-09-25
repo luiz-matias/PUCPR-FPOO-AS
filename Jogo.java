@@ -6,8 +6,7 @@ public class Jogo extends Produto {
     private String genero;
     private int faixaEtariaMinima;
 
-    public Jogo(double id, String nome, String descricao, double preco, String desenvolvedora, String genero,
-            int faixaEtariaMinima) {
+    public Jogo(double id, String nome, String descricao, double preco, String desenvolvedora, String genero, int faixaEtariaMinima) {
         super(id, nome, descricao, preco);
         this.desenvolvedora = desenvolvedora;
         this.genero = genero;

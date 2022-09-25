@@ -6,8 +6,8 @@ public class Assinatura extends Produto {
     private int quantidadeDias;
     private String codigoAtivacao;
 
-    public Assinatura(String nome, String descricao, double preco, String nomeServico, int quantidadeDias, String codigoAtivacao) {
-        super(nome, descricao, preco);
+    public Assinatura(double id, String nome, String descricao, double preco, String nomeServico, int quantidadeDias, String codigoAtivacao) {
+        super(id, nome, descricao, preco);
         this.nomeServico = nomeServico;
         this.quantidadeDias = quantidadeDias;
         this.codigoAtivacao = codigoAtivacao;

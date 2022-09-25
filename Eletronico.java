@@ -6,8 +6,8 @@ public class Eletronico extends Produto {
     private String modelo;
     private CondicaoEletronico condicao;
 
-    public Eletronico(String nome, String descricao, double preco, String marca, String modelo, CondicaoEletronico condicao) {
-        super(nome, descricao, preco);
+    public Eletronico(double id, String nome, String descricao, double preco, String marca, String modelo, CondicaoEletronico condicao) {
+        super(id, nome, descricao, preco);
         this.marca = marca;
         this.modelo = modelo;
         this.condicao = condicao;
