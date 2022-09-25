@@ -80,15 +80,63 @@ public class LojaJogos {
         return Integer.parseInt(entrada);
     }
 
-    /*
-     * TODO Implementar Sistema de UI para interagir com os objetos (JOptionPane)
-     * - 1. Inserir
-     * - 2. Exibir
-     * - 3. Limpar
-     * - 4. Gravar em arquivo
-     * - 5. Recuperar de arquivo
-     * - 9. Sair
-     */
+    public void salvaProdutos(ArrayList<Produto> produtos) {
+        ObjectOutputStream outputStream = null;
+        try {
+            outputStream = new ObjectOutputStream(new FileOutputStream("c:\\temp\\lojaJogos.dat"));
+            for (int i = 0; i < produtos.size(); i++)
+                outputStream.writeObject(produtos.get(i));
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Impossível criar arquivo!");
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally { // Close the ObjectOutputStream
+            try {
+                if (outputStream != null) {
+                    outputStream.flush();
+                    outputStream.close();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    @SuppressWarnings("finally")
+    public ArrayList<Produto> recuperaProdutos() {
+        ArrayList<Produto> produtosTemp = new ArrayList<Produto>();
+
+        ObjectInputStream inputStream = null;
+
+        try {
+            inputStream = new ObjectInputStream(new FileInputStream("c:\\temp\\lojaJogos.dat"));
+            Object obj = null;
+            while ((obj = inputStream.readObject()) != null) {
+                if (obj instanceof Produto) {
+                    produtosTemp.add((Produto) obj);
+                }
+            }
+        } catch (EOFException ex) { // when EOF is reached
+            System.out.println("Fim de arquivo.");
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } catch (FileNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "Não existe arquivo de produtos!");
+            ex.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally { // Close the ObjectInputStream
+            try {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (final IOException ex) {
+                ex.printStackTrace();
+            }
+            return produtosTemp;
+        }
+    }
 
     public void menuLojaJogos() {
         String menu = "";
@@ -158,7 +206,7 @@ public class LojaJogos {
                         JOptionPane.showMessageDialog(null, "Entre com produtos primeiramente");
                         break;
                     }
-                    // salvaProdutos(produtos);
+                    salvaProdutos(produtos);
                     JOptionPane.showMessageDialog(null, "Dados SALVOS com sucesso!");
                     break;
                 case 5: // Recupera Dados
