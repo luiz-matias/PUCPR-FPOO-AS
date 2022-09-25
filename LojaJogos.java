@@ -1,6 +1,5 @@
 package LojaJogos;
 
-import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -28,9 +27,11 @@ public class LojaJogos {
         String[] nomeVal = { "ID", "Nome", "Descrição", "Preço", "Desenvolvedora", "Gênero", "Faixa Etária Mínima" };
         valores = leValores(nomeVal);
 
+        double id = Double.parseDouble(valores[0]);
+        double preco = Double.parseDouble(valores[3]);
         int faixaEtaria = this.retornaInteiro(valores[6]);
 
-        Jogo jogo = new Jogo(valores[0], valores[1], valores[2], valores[3], valores[4], valores[5], faixaEtaria);
+        Jogo jogo = new Jogo(id, valores[1], valores[2], preco, valores[4], valores[5], faixaEtaria);
         return jogo;
     }
 
@@ -40,10 +41,11 @@ public class LojaJogos {
         String[] nomeVal = { "ID", "Nome", "Descrição", "Preço", "Marca", "Modelo", "Condição do Eletrônico" };
         valores = leValores(nomeVal);
 
-        int condicaoElet = this.retornaInteiro(valores[6]);
+        double id = Double.parseDouble(valores[0]);
+        double preco = Double.parseDouble(valores[3]);
 
-        Eletronico elet = new Eletronico(valores[0], valores[1], valores[2], valores[3], valores[4], valores[5],
-                condicaoElet);
+        Eletronico elet = new Eletronico(id, valores[1], valores[2], preco, valores[4], valores[5],
+                CondicaoEletronico.valueOf(valores[6]));
         return elet;
     }
 
@@ -54,9 +56,11 @@ public class LojaJogos {
                 "Chave de Ativação" };
         valores = leValores(nomeVal);
 
+        double id = Double.parseDouble(valores[0]);
+        double preco = Double.parseDouble(valores[3]);
         int duracao = this.retornaInteiro(valores[5]);
 
-        Assinatura assinatura = new Assinatura(valores[0], valores[1], valores[2], valores[3], valores[4], duracao,
+        Assinatura assinatura = new Assinatura(id, valores[1], valores[2], preco, valores[4], duracao,
                 valores[6]);
         return assinatura;
     }
