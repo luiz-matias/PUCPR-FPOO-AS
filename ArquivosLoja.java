@@ -30,13 +30,12 @@ public class ArquivosLoja {
             System.out.println("Produto inexistente!\n");
     }
 
-    public void excluirTodosProdutos() { // alterei o nome para ficar mais claro a funcionalidade
+    public void excluirTodosProdutos() {
         produtos.clear();
         System.out.println("Produtos excluidos com sucesso!\n");
     }
 
-    public void gravarProdutos() { // TODO passar as funções de gravar e recuperar para uma interface
-                                   // 'Serializable'
+    public void gravarProdutos() {
         ObjectOutputStream outputStream = null;
         try {
             outputStream = new ObjectOutputStream(new FileOutputStream("produtos.dat"));
